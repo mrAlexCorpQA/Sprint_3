@@ -34,7 +34,6 @@ public class LoginCourierEndPointTest {
     @DisplayName("Courier authorization")
     @Description("New courier authorization test for /api/v1/courier/login endpoint")
     public void courierAutoriszationAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -48,7 +47,6 @@ public class LoginCourierEndPointTest {
     @DisplayName("Courier authorization without Login")
     @Description("New courier authorization test without Login for /api/v1/courier/login endpoint")
     public void courierAutoriszationWithoutLoginAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -62,7 +60,6 @@ public class LoginCourierEndPointTest {
     @DisplayName("Courier authorization without Password")
     @Description("New courier authorization test without Password for /api/v1/courier/login endpoint")
     public void courierAutoriszationWithoutPasswordAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -76,7 +73,6 @@ public class LoginCourierEndPointTest {
     @DisplayName("Courier authorization with incorrect Login")
     @Description("New courier authorization test with incorrect Login for /api/v1/courier/login endpoint")
     public void courierAutoriszationWithIncorrectLoginAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -90,7 +86,6 @@ public class LoginCourierEndPointTest {
     @DisplayName("Courier authorization with incorrect Password")
     @Description("New courier authorization test with incorrect Password for /api/v1/courier/login endpoint")
     public void courierAutoriszationWithIncorrectPasswordAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);

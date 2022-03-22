@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
@@ -34,9 +35,9 @@ public class Order {
     //Введите комментарий для курьера
     String clientCommentText = "Код домофона 15к5552";
     //Цвет самоката (добавить/изменить новые цвета можно в тесте OrdersEndPointTest (используется параметризация)).
-    String[] samokatColor;
+    List<String> samokatColor;
 
-    public void setSamokatColor(String[] samokatColor) {
+    public void setSamokatColor(List<String> samokatColor) {
         this.samokatColor = samokatColor;
     }
 
@@ -59,7 +60,7 @@ public class Order {
                 + "\"rentTime\":" + rentTime + ","
                 + "\"deliveryDate\":\"" + samokatDeliveryDate + "\","
                 + "\"comment\":\"" + clientCommentText + "\","
-                + "\"color\":" + Arrays.toString(samokatColor) + "}";
+                + "\"color\":" + Arrays.toString(samokatColor.toArray()) + "}";
         return prepareOrderDataFull;
     }
 

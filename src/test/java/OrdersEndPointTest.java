@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 @RunWith(Parameterized.class)
@@ -13,19 +15,19 @@ public class OrdersEndPointTest {
 
     Order samokatOrder;
 
-    private final String[] samokatColor;
+    private final List<String> samokatColor;
 
-    public OrdersEndPointTest(String[] samokatColor) {
+    public OrdersEndPointTest(List<String> samokatColor) {
         this.samokatColor = samokatColor;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0}")
     public static Object[][] colorData() {
         return new Object[][]{
-                {new String[]{"\"BLACK\""}},
-                {new String[]{"\"GREY\""}},
-                {new String[]{"\"BLACK, GREY\""}},
-                {new String[]{""}},
+                {List.of("\"BLACK\"")},
+                {List.of("\"GREY\"")},
+                {List.of("\"BLACK, GREY\"")},
+                {List.of("")},
         };
     }
 
@@ -39,7 +41,6 @@ public class OrdersEndPointTest {
     @DisplayName("Create new order")
     @Description("New order creation test for /api/v1/orders")
     public void createNewOrderAPITestWithParameters() {
-        setUp();
         samokatOrder.setSamokatColor(samokatColor);
         Response newOrderResponse = samokatOrder.createNewOrderAPIRequest(samokatOrder.createFullTestDataForNewOrder());
         newOrderResponse.then().assertThat().body("track", notNullValue())

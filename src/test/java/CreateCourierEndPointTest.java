@@ -34,7 +34,6 @@ public class CreateCourierEndPointTest {
     @DisplayName("Create new courier")
     @Description("New courier creation test for /api/v1/courier endpoint")
     public void createNewCourierAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -45,7 +44,6 @@ public class CreateCourierEndPointTest {
     @DisplayName("Delete created courier (Service test)")
     @Description("Delete created courier (service test for /api/v1/courier/:id endpoint)")
     public void deleteCreatedCourierAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -63,7 +61,6 @@ public class CreateCourierEndPointTest {
     @DisplayName("Create two same couriers")
     @Description("Creation of two same couriers test for /api/v1/courier endpoint")
     public void createTwoSameCouriersAPITest() {
-        setUp();
         Response newCourierResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createFullCourierRandomTestRegData());
         newCourierResponse.then().assertThat().body("ok", equalTo(true))
                 .and().statusCode(201);
@@ -77,7 +74,6 @@ public class CreateCourierEndPointTest {
     @DisplayName("Create new courier without Login")
     @Description("New courier creation test without Login for /api/v1/courier endpoint")
     public void createNewCourierWithoutLoginAPITest() {
-        setUp();
         Response newCourierWithoutLoginResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createCourierRandomTestRegDataWithoutLogin());
         newCourierWithoutLoginResponse.then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and().statusCode(400);
@@ -88,7 +84,6 @@ public class CreateCourierEndPointTest {
     @DisplayName("Create new courier without Password")
     @Description("New courier creation test without Password for /api/v1/courier endpoint")
     public void createNewCourierWithoutPasswordAPITest() {
-        setUp();
         Response newCourierWithoutPasswordResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createCourierRandomTestRegDataWithoutPassword());
         newCourierWithoutPasswordResponse.then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and().statusCode(400);
@@ -100,7 +95,6 @@ public class CreateCourierEndPointTest {
     @DisplayName("Create new courier without Firstname")
     @Description("New courier creation test without Firstname for /api/v1/courier endpoint")
     public void createNewCourierWithoutFirstnameAPITest() {
-        setUp();
         Response newCourierWithoutFirstnameResponse = scooterRegisterCourier.createNewCourierAPIRequest(scooterRegisterCourier.createCourierRandomTestRegDataWithoutFirstname());
         newCourierWithoutFirstnameResponse.then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and().statusCode(400);

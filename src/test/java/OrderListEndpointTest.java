@@ -20,7 +20,6 @@ public class OrderListEndpointTest {
     @DisplayName("Get order list")
     @Description("Get order list test for /api/v1/orders endpoint")
     public void getOrderListAPITest() {
-        setUp();
         Response orderListResponse = orderList.orderListAPIRequest();
         orderListResponse.then().assertThat().body("orders", notNullValue())
                 .and().statusCode(200);
